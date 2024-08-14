@@ -1,15 +1,26 @@
 import { Header } from "./components/Header/Header";
 import { CoreConcept } from "./components/CoreConcept";
-import { CORE_CONCEPTS } from "./data";
+import { CORE_CONCEPTS, EXAMPLES } from "./data";
 import { TabButton } from "./components/Tab";
 import { useState } from "react";
 
 function App() {
-  const [tabContent, setTabContent] = useState("Press");
+  const [tabContent, setTabContent] = useState();
 
   function clickHandler(selected) {
     setTabContent(selected);
   }
+
+  let contentExample = <p>Please select an example</p>;
+
+  if (tabContent)
+    contentExample = (
+      <div id="tab-content">
+        <h3>{EXAMPLES[tabContent.toLowerCase()].title}</h3>
+        <p>{EXAMPLES[tabContent.toLowerCase()].description}</p>
+        <code>{EXAMPLES[tabContent.toLowerCase()].code}</code>
+      </div>
+    );
   const tabs = ["Components", "JSX", "Props", "State"];
   return (
     <div>
@@ -31,11 +42,11 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            {tabs.map((item, index) => (
+            {tabs.map((item) => (
               <TabButton onClick={() => clickHandler(item)}>{item}</TabButton>
             ))}
           </menu>
-          {tabContent}
+          {contentExample}
         </section>
       </main>
     </div>
