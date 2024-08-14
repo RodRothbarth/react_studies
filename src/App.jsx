@@ -43,7 +43,12 @@ function App() {
           <h2>Examples</h2>
           <menu>
             {tabs.map((item) => (
-              <TabButton onClick={() => clickHandler(item)}>{item}</TabButton>
+              <TabButton
+                isSelected={tabContent === item}
+                onClick={() => clickHandler(item)}
+              >
+                {item}
+              </TabButton>
             ))}
           </menu>
           {contentExample}
