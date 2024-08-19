@@ -1,7 +1,7 @@
-export function Tabs({ children, buttons }) {
+export function Tabs({ children, buttons, Container = "menu" }) {
   return (
     <>
-      <menu>{buttons}</menu>
+      <Container>{buttons}</Container>
       {children}
     </>
   );

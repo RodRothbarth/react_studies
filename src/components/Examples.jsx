@@ -25,6 +25,7 @@ export function Examples() {
   return (
     <Section title="Examples" id="examples">
       <Tabs
+        // Container={Section} if you want to send a custom component send the function nada in  brackets {Section}. for built-in, send only the string 'div', 'section', 'ul'...
         buttons={
           <>
             {tabs.map((item) => (
