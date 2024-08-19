@@ -1,6 +1,8 @@
 import { TabButton } from "./Tab";
 import { useState } from "react";
 import { EXAMPLES } from "../data";
+import { Tabs } from "./Tab/Tabs";
+import { Section } from "./Section";
 
 export function Examples() {
   const tabs = ["Components", "JSX", "Props", "State"];
@@ -21,19 +23,23 @@ export function Examples() {
       </div>
     );
   return (
-    <section id="examples">
-      <h2>Examples</h2>
-      <menu>
-        {tabs.map((item) => (
-          <TabButton
-            isSelected={tabContent === item}
-            onClick={() => clickHandler(item)}
-          >
-            {item}
-          </TabButton>
-        ))}
-      </menu>
-      {contentExample}
-    </section>
+    <Section title="Examples" id="examples">
+      <Tabs
+        buttons={
+          <>
+            {tabs.map((item) => (
+              <TabButton
+                isSelected={tabContent === item}
+                onClick={() => clickHandler(item)}
+              >
+                {item}
+              </TabButton>
+            ))}
+          </>
+        }
+      >
+        {contentExample}
+      </Tabs>
+    </Section>
   );
 }
